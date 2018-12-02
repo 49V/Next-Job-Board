@@ -3,13 +3,13 @@ class StaticPagesController < ApplicationController
   def home
   end
 
-  def help
+  def account
   end
 
-  def about
+  def candidates
   end
 
-  def contact
+  def job
   end
 
 end

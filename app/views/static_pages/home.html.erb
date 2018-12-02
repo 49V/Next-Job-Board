@@ -1,15 +1,70 @@
-<div class="center jumbotron">
-  <h1>Welcome to the Sample App</h1>
+<!DOCTYPE html>
 
-  <h2>
-    This is the home page for the
-    <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-    sample application.
-  </h2>
+<html>
 
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-</div>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css"></style>
+  <link href="main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
 
-<%= link_to image_tag("rails.png", alt: "Rails logo"),
-            'http://rubyonrails.org/' %>
+<body>
 
+  <div class="page-background">
+
+  <div class="page-container">
+
+    <!-- NAVIGATION BAR -->
+    <div class="nav-bar">
+
+      <a href="/">
+        <img
+          class="next-logo"
+          src="assets/Next-Canada-RGB.png"
+          alt=""/>
+      </a>
+
+      <div class="hamburger-menu">
+        <a class="nav-button" href="./jobs.html">Jobs</a>
+        <a class="nav-button" href="./candidates.html">Candidates</a>
+        <a class="nav-button" href="./account.html">Account</a>
+      </div>
+
+    </div>
+
+    <div class="content-container" style="margin-top: 100px">
+
+      <!-- PAGE HEADER -->
+      <div class="page-header h-1">
+        Welcome to the Next Alumni Job Portal
+      </div>
+      <div class="page-header h-2">
+        Work for a Next Alumni Company or Hire a Next Alumni
+      </div>
+
+      <!-- ACCESS CARDS -->
+      <div class="card-container">
+        <a class="card" href="./jobs.html">
+          <div class="card__banner"></div>
+          <div class="card__text">
+            Jobs
+          </div>
+        </a>
+        <a class="card" href="./candidates.html">
+          <div class="card__banner"></div>
+          <div class="card__text">
+            Candidates
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+   </div>
+
+   </div>
+
+</body>
+
+</html>
