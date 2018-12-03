@@ -35,6 +35,9 @@
 
     <div class="content-container" style="margin-top: 100px">
 
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
       <!-- PAGE HEADER -->
       <div class="page-header h-1">
         Welcome to the Next Alumni Job Portal

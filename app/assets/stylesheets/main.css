@@ -51,7 +51,7 @@ input[type="submit"]
 
 	.nav-bar {
 		flex: 0 0 80px;
-		
+
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
@@ -85,7 +85,7 @@ input[type="submit"]
 
 	.content-container {
 		flex: 0 1 100%;
-		
+
 		display: flex;
 		flex-direction: column;
 	}
@@ -115,13 +115,13 @@ input[type="submit"]
 	.submit__button {
 		border-radius: 5px;
 		padding: 10px 20px;
-		
+
 		border: 1px solid var(--next-red);
 
 		transition: all 0.5s;
 
 		cursor: pointer;
-	}	
+	}
 
 	.submit__button:hover {
 		color: var(--next-red);
@@ -153,7 +153,7 @@ input[type="submit"]
 	.card:hover {
 		font-size: 2.95em;
 		background-color: rgba(0, 0, 0, 0.01);
-		box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.4);	
+		box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.4);
 	}
 
 	.card__banner {
@@ -167,7 +167,7 @@ input[type="submit"]
 		flex: 0 1 100%;
 		display: flex;
 		flex-direction: row;
-		
+
 		justify-content: center;
 		align-items: center;
 		text-align: center;
@@ -263,7 +263,7 @@ input[type="submit"]
 	}
 
 	.post-note {
-		font-size: 0.9em;	
+		font-size: 0.9em;
 		padding-top: 20px;
 	}
 
@@ -293,7 +293,7 @@ input[type="submit"]
 	}
 
 /* ACCOUNT STYLING */
-	
+
 	.account-settings__container {
 		display: flex;
 		flex-direction: column;
@@ -346,7 +346,7 @@ input[type="submit"]
 		transition: all 0.2s;
 
 		cursor: pointer;
-	}	
+	}
 
 	.account-settings__edit:hover {
 		color: var(--next-red);
@@ -367,7 +367,7 @@ input[type="submit"]
 		transition: all 0.5s;
 
 		cursor: pointer;
-	}	
+	}
 
 	.account-settings__logout:hover {
 		color: var(--next-red);
@@ -375,7 +375,7 @@ input[type="submit"]
 	}
 
 /* SIGN-UP STYLING */
-	
+
 	.sign-up__container {
 		display: flex;
 		flex-direction: column;
@@ -420,7 +420,7 @@ input[type="submit"]
 	}
 
 /* POST JOB POP BOX STYLING */
-	
+
 	.pop-box-overlay {
 		display: none;
 		position: fixed;
@@ -564,6 +564,21 @@ input[type="submit"]
 
 	.radio-button {
 		margin-right: 20px;
+	}
+
+	#error_explanation {
+	  color: red;
+	  ul {
+	    color: red;
+	    margin: 0 0 30px 0;
+	  }
+	}
+
+	.field_with_errors {
+	  @extend .has-error;
+	  .form-control {
+	    color: $state-danger-text;
+	  }
 	}
 
 /*///////////////////////////////////////////////////////////////////////////*/

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="candidates.js"></script>
+  <style type="text/css"></style>
+  <link href="main.css" rel="stylesheet" type="text/css">
+  <link href="candidates.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+	<div class="page-background">
+
+	<div class="page-container">
+
+	  <!-- NAVIGATION BAR -->
+	  <div class="nav-bar">
+
+	  	<a href="/">
+	  		<img
+		  		class="next-logo"
+		  		src="assets/Next-Canada-RGB.png"
+		  		alt=""/>
+	  	</a>
+
+	  </div>
+
+
+	  <div class="content-container" style="margin-top: 20px">
+
+		  <!-- PAGE HEADER -->
+		  <div class="page-header h-1">
+		  	Sign Up
+		  </div>
+		  <div class="page-header h-2">
+		  	Get Access to the Next Alumni Network
+		  </div>
+
+		  <div class="sign-up__container">
+
+		  	<%= form_for(@user) do |f| %>
+		  		<input name="utf8" type="hidden" value="&#x2713;" />
+					<input name="authenticity_token" type="hidden"
+       			value="NNb6+J/j46LcrgYUC60wQ2titMuJQ5lLqyAbnbAUkdo=" />
+       	<%= render 'shared/error_messages' %>
+
+		  		<div class="sign-up__row">
+		  			<%= f.label :name, class: 'sign-up__variable' %>
+		  			<%= f.text_field :name, class: 'sign-up__value form-control', placeholder: 'Your Name' %>
+					</div>
+
+					<div class="sign-up__row">
+						<%= f.label :email, class: 'sign-up__variable' %>
+			  		<%= f.text_field :email, class: 'sign-up__value form-control', placeholder: 'Your Email' %>
+					</div>
+
+					<div class="sign-up__row">
+			  		<%= f.label :password, class: 'sign-up__variable' %>
+			  		<%= f.password_field :password, class: 'sign-up__value form-control'%>
+					</div>
+
+					<div class="sign-up__row">
+						<%= f.label :password_confirmation, "Confirmation", class: 'sign-up__variable' %>
+						<%= f.password_field :password_confirmation, class: 'sign-up__value form-control' %>
+			  	</div>
+
+			  	<div class="sign-up__row row-reverse">
+		  			<%= f.submit "Sign Up", class: "submit__button" %>
+		  		</div>
+
+				<% end %>
+
+		</div>
+
+	 </div>
+
+	</div>
+
+</body>
+
+</html>
