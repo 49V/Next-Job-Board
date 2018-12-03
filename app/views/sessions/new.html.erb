@@ -56,7 +56,14 @@
           <%= f.password_field :password, class: 'sign-up__value form-control'%>
         </div>
 
+        <div align="center">
+          <%= f.label :remember_me, style: "padding-left:55px", class: "sign-up__variable" do %>
+          <%= f.check_box :remember_me %><span style="padding-left:10px;">Remember me</span>
+          <% end %>
+        </div>
+
         <div>
+          <br/>
           <p align="center">New user? <%= link_to "Sign up now!", users_path, style: 'color:#D8272D;' %></p>
         </div>
 
