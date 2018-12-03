@@ -24,6 +24,11 @@
 		  		alt=""/>
 	  	</a>
 
+	  	<div class="hamburger-menu">
+        <a class="nav-button" style="color: #D8272D; font-weight: 700;"href="./users">Sign Up</a>
+        <a class="nav-button" href="./login">Log In</a>
+      </div>
+
 	  </div>
 
 
@@ -40,9 +45,6 @@
 		  <div class="sign-up__container">
 
 		  	<%= form_for(@user) do |f| %>
-		  		<input name="utf8" type="hidden" value="&#x2713;" />
-					<input name="authenticity_token" type="hidden"
-       			value="NNb6+J/j46LcrgYUC60wQ2titMuJQ5lLqyAbnbAUkdo=" />
        	<%= render 'shared/error_messages' %>
 
 		  		<div class="sign-up__row">
@@ -64,6 +66,10 @@
 						<%= f.label :password_confirmation, "Confirmation", class: 'sign-up__variable' %>
 						<%= f.password_field :password_confirmation, class: 'sign-up__value form-control' %>
 			  	</div>
+
+			  	<div>
+          <p align="center">Already have an account? <%= link_to "Log In!", login_path, style: 'color:#D8272D;' %></p>
+        </div>
 
 			  	<div class="sign-up__row row-reverse">
 		  			<%= f.submit "Sign Up", class: "submit__button" %>
