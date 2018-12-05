@@ -27,7 +27,7 @@
 	  	<div class="hamburger-menu">
 	  		<a class="nav-button" href="./jobs">Jobs</a>
 	  		<a class="nav-button" style="color: #D8272D; font-weight: 700;" href="./candidates">Candidates</a>
-	  		<a class="nav-button" href="./account">Account</a>
+	  		<%= link_to "Settings", edit_user_path(current_user), class: "nav-button"%>
 	  		<a class="nav-button" href="/logout" data-method="delete">Log Out</a>
 	  	</div>
 

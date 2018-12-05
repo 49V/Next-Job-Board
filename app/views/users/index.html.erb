@@ -27,22 +27,25 @@
       <div class="hamburger-menu">
         <a class="nav-button" style="color: #D8272D; font-weight: 700;" href="./jobs">Jobs</a>
         <a class="nav-button" href="./candidates">Candidates</a>
-        <%= link_to "Settings", edit_user_path(current_user), class: "nav-button"%>
+        <%= link_to "Admin Settings", edit_user_path(current_user), class: "nav-button"%>
         <a class="nav-button" href="/logout" data-method="delete">Log Out</a>
       </div>
 
     </div>
 
-
     <div class="content-container" style="margin-top: 50px">
 
+      <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
       <!-- PAGE HEADER -->
       <div class="page-header__container">
+
         <div class="page-header h-1">
-          Jobs
+          User List
         </div>
         <div class="page-header h-2">
-          Work for a Next Alumni Company
+          Currently registered users
         </div>
 
         <button
@@ -59,88 +62,31 @@
       <div class="post-list-container">
 
         <!-- EXAMPLE OR A USER-OWNED POST -->
+        <center><%= will_paginate %></center>
+          <% @users.each do |user| %>
+            <div class="post-container post-owned">
 
-        <div class="post-container post-owned">
-
-          <div class="post-container__left">
-            <div class="post-info__wrapper post-title">
-              Job Title
-            </div>
-            <div class="post-info__wrapper poster-name">
-              Company Name
-            </div>
-            <div class="post-info__wrapper post-note">
-              Note / Bio / Description
-            </div>
-          </div>
-
-          <div class="post-container__right">
-            <div class="post-info__wrapper">
-              <div class="post-action__item"> Edit </div>
-              <i
-                class="fas fa-trash post-action__item"
-                style="margin-left: 20px;">
-              </i>
-            </div>
-            <div class="post-info__wrapper">
-              <div class="job-category job-category__active">
-                Marketing
+              <div class="post-container__left">
+                <div class="post-info__wrapper post-title">
+                  <%= user.name %>
+                </div>
+                <div class="post-info__wrapper poster-name">
+                  <%= user.email %>
+                </div>
               </div>
-              <div class="job-category job-category__inactive">
-                Tech
-              </div>
-              <div class="job-category job-category__inactive">
-                Finance
+
+              <div class="post-container__right">
+                <div class="post-info__wrapper">
+                  <% if current_user.admin? && !current_user?(user) %>
+                  <%= link_to "Delete", user, method: :delete, data: {confirm: "Are you sure?"} %>
+                  <i class="fas fa-trash post-action__item" style="margin-left: 20px;">
+                  </i>
+                  <% end %>
+                </div>
               </div>
             </div>
-            <div class="post-info__wrapper post-action__item">
-              Link to Job Posting
-              <i class="fas fa-external-link-alt" style="margin-left: 20px;"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- EXAMPLE OR A PUBLIC POST -->
-
-        <div class="post-container post-public">
-
-          <div class="post-container__left">
-            <div class="post-info__wrapper post-title">
-              Job Title
-            </div>
-            <div class="post-info__wrapper poster-name">
-              Company Name
-            </div>
-            <div class="post-info__wrapper post-note">
-              Note / Bio / Description
-            </div>
-          </div>
-
-          <div class="post-container__right">
-            <div class="post-info__wrapper">
-              <i
-                class="fas fa-chevron-down post-action__item"
-                style="margin-left: 20px;">
-              </i>
-            </div>
-            <div class="post-info__wrapper">
-              <div class="job-category job-category__inactive">
-                Marketing
-              </div>
-              <div class="job-category job-category__inactive">
-                Tech
-              </div>
-              <div class="job-category job-category__active">
-                Finance
-              </div>
-            </div>
-            <div class="post-info__wrapper post-action__item">
-              Link to Job Posting
-              <i class="fas fa-external-link-alt" style="margin-left: 20px;"></i>
-            </div>
-          </div>
-        </div>
-
+          <% end %>
+        <center><%= will_paginate %></center>
         </div>
       </div>
 
@@ -155,11 +101,6 @@
           <div class="close-pop-button" onclick="closePostJobPop()">
             <i class="fas fa-times"></i>
           </div>
-
-          <div class="post-job-pop-title">
-            Make a Job Posting
-          </div>
-
         </div>
 
         <div class="form-container">
