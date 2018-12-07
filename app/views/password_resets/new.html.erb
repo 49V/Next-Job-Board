@@ -37,51 +37,26 @@
 
     <!-- PAGE HEADER -->
     <div class="page-header h-1">
-        Log In
+        Reset Password
     </div>
 
     <div class="content-container" style="margin-top: 50px">
 
-      <%= form_for(:session, url: login_path) do |f| %>
+      <%= form_for(:password_reset, url: password_resets_path) do |f| %>
 
       <div class="sign-up__container">
 
         <div class="sign-up__row">
           <%= f.label :email, class: 'sign-up__variable' %>
-          <%= f.text_field :email, class: 'sign-up__value form-control', placeholder: 'Your Email' %>
+          <%= f.email_field :email, class: 'sign-up__value'%>
         </div>
 
-        <div class="sign-up__row">
-          <%= f.label :password, class: 'sign-up__variable' %>
-          <%= f.password_field :password, class: 'sign-up__value form-control'%>
+        <div align="center", style="padding: 20px;">
+          <%= f.submit "Submit", class: "submit__button" %>
         </div>
-
-        <div align="center">
-          <%= f.label :remember_me, style: "padding-left:55px", class: "sign-up__variable" do %>
-          <%= f.check_box :remember_me %><span style="padding-left:10px;">Remember me</span>
-          <% end %>
-        </div>
-
-        <div>
-          <br/>
-          <p align="center">New user? <%= link_to "Sign up now!", users_path, style: 'color:#D8272D;' %></p>
-        </div>
-
-        <div align= "center">
-          <%= link_to "Forgot password?", new_password_reset_path, style: "color : #D8272D;" %>
-        </div>
-
-        <div class="sign-up__row row-reverse">
-          <%= f.submit "Log In", class: "submit__button" %>
-        </div>
-
-
-
       </div>
 
       <% end %>
-
-
 
     </div>
 

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="candidates.js"></script>
+  <style type="text/css"></style>
+  <link href="main.css" rel="stylesheet" type="text/css">
+  <link href="candidates.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+  <div class="page-background">
+
+  <div class="page-container">
+
+    <!-- NAVIGATION BAR -->
+    <div class="nav-bar">
+
+      <a href="/">
+        <img
+          class="next-logo"
+          src="assets/Next-Canada-RGB.png"
+          alt=""/>
+      </a>
+
+      <div class="hamburger-menu">
+        <a class="nav-button" href="./users">Sign Up</a>
+        <a class="nav-button" style="color: #D8272D; font-weight: 700;"href="/login">Log In</a>
+      </div>
+
+    </div>
+
+    <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header h-1">
+        Reset Password
+    </div>
+
+    <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <div class="content-container" style="margin-top: 50px">
+
+          <div class="sign-up__container">
+
+          <%= hidden_field_tag :email, @user.email%>
+
+            <div class="sign-up__row">
+              <%= f.label :password, class: 'sign-up__variable' %>
+              <%= f.password_field :password, class: 'sign-up__value'%>
+            </div>
+
+            <div class="sign-up__row">
+              <%= f.label :password_confirmation, "Confirmation", class: 'sign-up__variable' %>
+              <%= f.password_field :password_confirmation, class: 'sign-up__value'%>
+            </div>
+
+            <div align="center", style="padding: 20px;">
+              <%= f.submit "Submit", class: "submit__button" %>
+            </div>
+          </div>
+
+        <% end %>
+
+      </div>
+
+   </div>
+
+  </div>
+
+</body>
+
+</html>
