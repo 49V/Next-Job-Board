@@ -10,7 +10,4 @@ class StaticPagesController < ApplicationController
   def candidates
   end
 
-  def job
-  end
-
 end

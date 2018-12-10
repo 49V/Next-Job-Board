@@ -45,8 +45,7 @@
 		  <div class="sign-up__container">
 
 		  	<%= form_for(@user) do |f| %>
-       	<%= render 'shared/error_messages' %>
-
+					<%= render 'shared/error_messages', object: f.object %>
 		  		<div class="sign-up__row">
 		  			<%= f.label :name, class: 'sign-up__variable' %>
 		  			<%= f.text_field :name, class: 'sign-up__value form-control', placeholder: 'Your Name' %>

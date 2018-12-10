@@ -75,4 +75,17 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.authenticated?(:remember, '')
   end
 
+  test "associated microposts should be destroyed" do
+    @user.save
+    @user.jobs.create!(title: "Dev",
+                       company: "Beans & Co.",
+                       website: "www.beans.com",
+                       link: "www.linkedin.com",
+                       role: "Technical",
+                       notes: "MEOW MEOW MEOW")
+    assert_difference 'Job.count', -1 do
+      @user.destroy
+    end
+  end
+
 end

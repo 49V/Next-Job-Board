@@ -24,5 +24,18 @@ User.create!(name:  "Example User",
                password_confirmation: password,
                activated: true,
                activated_at: Time.zone.now)
+
+
 end
 
+users = User.order(:created_at).take(6)
+50.times do
+  content = Faker::Lorem.sentence(5)
+  website = "https://www.linkedin.com"
+  users.each { |user| user.jobs.create!(title: content,
+                                        company: "BEANS",
+                                        website: website,
+                                        link: "https://www.facebook.com",
+                                        role: "Tech",
+                                        notes: "Darian sucks") }
+end

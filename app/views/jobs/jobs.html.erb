@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style type="text/css"></style>
+  <link href="main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div class="page-background">
+
+  <div class="page-container">
+
+    <!-- NAVIGATION BAR -->
+    <div class="nav-bar">
+
+      <a href="/">
+        <img
+          class="next-logo"
+          src="/assets/Next-Canada-RGB.png"
+          alt=""/>
+      </a>
+      <div class="hamburger-menu">
+        <a class="nav-button" style="color: #D8272D; font-weight: 700;" href="./jobs">Jobs</a>
+        <a class="nav-button" href="./candidates">Candidates</a>
+        <%= link_to "Settings", edit_user_path(current_user), class: "nav-button"%>
+        <a class="nav-button" href="/logout" data-method="delete">Log Out</a>
+      </div>
+
+    </div>
+
+
+    <div class="content-container" style="margin-top: 50px">
+
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <!-- PAGE HEADER -->
+      <div class="page-header__container">
+        <div class="page-header h-1">
+          Jobs
+        </div>
+        <div class="page-header h-2">
+          Work for a Next Alumni Company
+        </div>
+
+        <%= button_tag "Post Job", type: 'button', onclick: "openPostJobPop()", id: "post-job", class: "create-button" %>
+      </div>
+
+      <!-- PAGE CONTENT -->
+      <div class="post-list-container">
+
+        <!-- PAGE CONTENT - FROM USER -->
+        <% if @user.jobs.any? %>
+        <div class="page-header h-1">
+              Your Job Postings:
+        </div>
+          <% @user.jobs.each do |user_job| %>
+            <div class="post-container post-owned">
+              <div class="post-container__left">
+                <div class="post-info__wrapper post-title">
+                  <%= user_job.title %>
+                </div>
+                <div class="post-info__wrapper poster-name">
+                  <%= user_job.company %>
+                </div>
+                <div class="post-info__wrapper post-note">
+                  <%= user_job.notes %>
+                </div>
+              </div>
+
+              <div class="post-container__right">
+                <div class="post-info__wrapper">
+                  <div class="post-action__item"> Edit </div>
+
+                  <!-- LINK TO TRASH CAN-->
+                  <%= link_to user_job, method: :delete, data: { confirm: "Are you sure?"} do%>
+                  <i
+                    class="fas fa-trash post-action__item"
+                    style="margin-left: 20px;">
+                  </i>
+                  <% end %>
+                </div>
+                <% if user_job.role == 'Marketing' %>
+                  <%= render 'layouts/marketing'%>
+                <% elsif user_job.role == 'Tech'%>
+                  <%= render 'layouts/tech'%>
+                <% else %>
+                  <%= render 'layouts/finance' %>
+                <% end %>
+                <div class="post-info__wrapper post-action__item">
+                  <%= link_to "#{user_job.link}", "http://#{user_job.link}" %>
+                  <i class="fas fa-external-link-alt" style="margin-left: 20px;"></i>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
+        <!-- PAGE CONTENT - FROM PUBLIC -->
+        <% if @public_jobs.any? %>
+        <div class="page-header h-1">
+              Public Job Postings:
+        </div>
+        <center><%= will_paginate @public_jobs %></center>
+          <% @public_jobs.each do |public_job| %>
+            <div class="post-container post-public">
+
+              <div class="post-container__left">
+                <div class="post-info__wrapper post-title">
+                  <%= public_job.title %>
+                </div>
+                <div class="post-info__wrapper poster-name">
+                  <%= public_job.company %>
+                </div>
+                <div class="post-info__wrapper post-note">
+                  <%= public_job.notes %>
+                </div>
+              </div>
+
+              <div class="post-container__right">
+                <div class="post-info__wrapper">
+                </div>
+                <% if public_job.role == 'Marketing' %>
+                  <%= render 'layouts/marketing'%>
+                <% elsif public_job.role == 'Tech'%>
+                  <%= render 'layouts/tech'%>
+                <% else %>
+                  <%= render 'layouts/finance' %>
+                <% end %>
+                <div class="post-info__wrapper post-action__item">
+                  <%= link_to "#{public_job.link}", "http://#{public_job.link}" %>
+                  <i class="fas fa-external-link-alt" style="margin-left: 20px;"></i>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <center><%= will_paginate @public_jobs %></center>
+        </div>
+      </div>
+
+    </div>
+
+   </div>
+
+   <div class="pop-box-overlay" id="post-job-pop">
+    <div class="pop-box-display-wrapper">
+      <div class="pop-box-container">
+        <div class="close-pop-container">
+          <div class="close-pop-button" onclick="closePostJobPop()">
+            <i class="fas fa-times"></i>
+          </div>
+
+          <div class="post-job-pop-title">
+            Make a Job Posting
+          </div>
+
+        </div>
+
+        <div class="form-container">
+          <%= form_for(@job) do |f|%>
+            <%= render 'shared/error_messages', object: f.object %>
+              <div class="post-job__row">
+                <%= f.label :title, class: "post-job__variable"%>
+                <%= f.text_field :title, class: "post-job__value", placeholder: "Frontend Developer / Co-founder" %>
+              </div>
+
+              <div class="post-job__row">
+                <%= f.label :company, class: "post-job__variable" %>
+                <%= f.text_field :company, class: "post-job__value", placeholder: "Company XYZ Inc."%>
+              </div>
+
+              <div class="post-job__row">
+                <%= f.label :website, class: "post-job__variable" %>
+                <%= f.url_field :website, class: "post-job__value", placeholder: "https://www.startup.com" %>
+              </div>
+
+              <div class="post-job__row">
+                <%= f.label :link, class: "post-job__variable" %>
+                <%= f.url_field :link, class: "post-job__value", placeholder: "https://www.angel.co/jobs/examle_url"%>
+              </div>
+
+              <div class="post-job__row__column">
+                <div class="post-job__variable__2">
+                  Type of Role
+                </div>
+                <div class="radio-row">
+                  <%= f.radio_button :role, 'Marketing', class: "radio-button" %>
+                    <div class="post-job__value__2">
+                      Marketing
+                    </div>
+                    <br />
+                </div>
+
+                <div class="radio-row">
+                  <%= f.radio_button :role, 'Finance', class: "radio-button" %>
+                  <div class="post-job__value__2">
+                    Finance
+                  </div>
+                  <br />
+                </div>
+
+                <div class="radio-row">
+                  <%= f.radio_button :role, 'Tech', class: "radio-button" %>
+                  <div class="post-job__value__2">
+                    Tech
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="post-job__row">
+                <%= f.label :notes, class: "post-job__variable" %>
+                <%= f.text_area :notes, class: "post-job__value" %>
+              </div>
+
+              <div class="post-job__row row-reverse">
+                <%= f.submit "Post", class: "submit__button" %>
+              </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+</body>
+
+</html>
