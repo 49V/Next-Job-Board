@@ -1,9 +1,47 @@
-<h1>Sample App</h1>
+<!DOCTYPE html>
+<html>
 
-<p>Hi <%= @user.name %>,</p>
+<head>
+  <style type="text/css"></style>
+  <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application',  'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
 
-<p>
-Welcome to the Sample App! Click on the link below to activate your account:
-</p>
+<body>
 
-<%= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+<div class="page-background">
+  <div class="activation__container">
+
+    <%= image_tag "Next-Canada-RGB.png", class: "activation__next-logo"%>
+
+    <div class="activation__header">
+      Account Activated!
+    </div>
+
+    <div class="activation__body-text">
+      Welcome to the Next Canada Job Portal.
+      This portal allows you to find Next Alumni that are searching for a job.
+      It also allows Next Alumni to find jobs, at companies run by other Next Alumni.
+    </div>
+
+    <div class="activation__body-text">
+      Find Co-Founders, first hires, and recruit people who've already proven their drive, passion and committment to their work.
+    </div>
+
+    <div class="activation__body-text">
+      Best of luck to you!
+    </div>
+
+    <div class="submit__button" style="margin-top: 50px;">
+      <%= link_to "Go to Portal", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+    </div>
+
+  </div>
+</div>
+
+</body>
+
+</html>
+

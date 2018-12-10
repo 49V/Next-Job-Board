@@ -1,5 +1,13 @@
-Hi <%= @user.name %>,
 
-Welcome to the Sample App! Click on the link below to activate your account:
+Account Activated!
+
+  Welcome to the Next Canada Job Portal.
+  This portal allows you to find Next Alumni that are searching for a job.
+  It also allows Next Alumni to find jobs, at companies run by other Next Alumni.
+
+  Find Co-Founders, first hires, and recruit people who've already proven their drive, passion and committment to their work.
+
+  Best of luck to you!
+
 
 <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
