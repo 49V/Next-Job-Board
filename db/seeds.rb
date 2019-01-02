@@ -18,17 +18,18 @@ User.create!(name:  "Example User",
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
-  User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password,
-               activated: true,
-               activated_at: Time.zone.now)
+  user = User.create!(name:  name,
+                      email: email,
+                      password:              password,
+                      password_confirmation: password,
+                      activated: true,
+                      activated_at: Time.zone.now)
+
 
 
 end
 
-users = User.order(:created_at).take(6)
+users = User.order(:created_at).take(50)
 50.times do
   content = Faker::Lorem.sentence(5)
   website = "https://www.linkedin.com"
@@ -38,4 +39,10 @@ users = User.order(:created_at).take(6)
                                         link: "https://www.facebook.com",
                                         role: "Tech",
                                         notes: "Darian sucks") }
+
+  users.each { |user| user.create_candidate!(bio: "Motivated Entrepreneur",
+                                             name: user.name,
+                                             portfolio: "https://www.linkedin.com/in/moshelawlor/",
+                                             role: "Tech",
+                                             user_id: user.id) }
 end

@@ -24,7 +24,7 @@
       </a>
       <div class="hamburger-menu">
         <a class="nav-button" style="color: #D8272D; font-weight: 700;" href="./jobs">Jobs</a>
-        <a class="nav-button" href="./candidates">Candidates</a>
+        <a class="nav-button" href="./candidate">Candidates</a>
         <%= link_to "Settings", edit_user_path(current_user), class: "nav-button"%>
         <a class="nav-button" href="/logout" data-method="delete">Log Out</a>
       </div>
@@ -74,7 +74,6 @@
               <div class="post-container__right">
                 <div class="post-info__wrapper">
                   <div class="post-action__item"> Edit </div>
-
                   <!-- LINK TO TRASH CAN-->
                   <%= link_to user_job, method: :delete, data: { confirm: "Are you sure?"} do%>
                   <i
@@ -146,6 +145,7 @@
 
    </div>
 
+   <!-- JOB FORM POP UP -->
    <div class="pop-box-overlay" id="post-job-pop">
     <div class="pop-box-display-wrapper">
       <div class="pop-box-container">

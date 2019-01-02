@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
   get '/account',    to: 'static_pages#account'
-  get '/candidates', to: 'static_pages#candidates'
+  get '/candidate', to: 'candidates#candidate'
   get '/jobs',       to: 'jobs#jobs'
   get '/users',      to: 'users#signup'
   get '/index',      to: 'users#index'
@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :jobs,                only: [:create, :destroy]
+  resource  :candidate,           only: [:create,:destroy, :update]
 end
