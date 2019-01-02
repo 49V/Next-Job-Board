@@ -1,20 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 moshe:
-  bio: "I grew up in the terrible small town of Prince George and I am
-        trying to make a name for myself"
-  portfolio: "www.linkedin.com/moshelawlor"
-  role: "Tech"
+  bio: MyText
+  portfolio: MyText
+  role: MyText
   user: michael
 
 reza:
-  bio: "I would like to prove something"
-  portfolio: "www.linkedin.com/rezasatchu"
-  role: "Marketing"
-  user: archer
-
-grace:
-  bio: "Smart, energetic, accountant with high attention to detail"
-  portfolio: "www.linkedin.com/gracechang"
-  role: "Finance"
-  user: grace
+  bio: MyText
+  portfolio: MyText
+  role: MyText
+  user: two
