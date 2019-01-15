@@ -93,6 +93,9 @@ input[type="submit"]
 	.page-header__container {
 		position: relative;
 		flex: 0 0 auto;
+
+		border-bottom: 1px solid #E6E6E6;
+		box-shadow: 0px 7px 10px -10px #000;
 	}
 
 	.page-header {
@@ -108,8 +111,15 @@ input[type="submit"]
 	.h-2 {
 		font-size: 1.4em;
 
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+	.h-3 {
+		font-size: 1.2em;
+
 		margin-top: 20px;
-		margin-bottom: 70px;
+		margin-bottom: 0px;
 	}
 
 	.submit__button {
@@ -224,7 +234,7 @@ input[type="submit"]
 		flex-direction: row;
 		justify-content: space-between;
 
-		min-height: 100px;
+		min-height: 150px;
 	}
 
 	.post-container__left {
