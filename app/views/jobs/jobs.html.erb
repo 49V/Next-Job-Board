@@ -3,6 +3,7 @@
 
 <head>
   <script src="candidates.js"></script>
+  <%= javascript_include_tag "application" %>
 </head>
 
 <body>
@@ -84,7 +85,7 @@
                   <%= render 'layouts/finance' %>
                 <% end %>
                 <div class="post-info__wrapper post-action__item">
-                  <%= link_to "#{user_job.link}", "http://#{user_job.link}" %>
+                  <%= link_to "#{user_job.link}", "#{user_job.link}" %>
                   <i class="fas fa-external-link-alt" style="margin-left: 20px;"></i>
                 </div>
               </div>
@@ -205,7 +206,6 @@
                 </div>
 
               </div>
-
 
               <div class="post-job__row">
                 <%= f.label :notes, class: "post-job__variable" %>

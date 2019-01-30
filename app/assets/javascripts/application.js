@@ -13,12 +13,11 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-//= require jobs.js
 
-function openPostJobPop() {
-  document.getElementById("post-job-pop").style.display = "inherit";
-}
+// function openPostJobPop() {
+//   document.getElementById("post-job-pop").style.display = "inherit";
+// }
 
-function closePostJobPop() {
-  document.getElementById("post-job-pop").style.display = "none";
-}
+// function closePostJobPop() {
+//   document.getElementById("post-job-pop").style.display = "none";
+// }
