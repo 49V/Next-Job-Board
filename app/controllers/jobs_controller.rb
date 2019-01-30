@@ -13,8 +13,10 @@ class JobsController < ApplicationController
 
   def create
     @job = current_user.jobs.build(job_params)
+    debugger;
     @user = current_user
     @user_jobs = @user.jobs.paginate(page: params[:page])
+    # Creates a public jobs instance variable for jobs that do not belong to current_user
     @public_jobs = Job.where("user_id != #{@user.id}").paginate(page: params[:page])
     if @job.save
       flash[:success] = "Job created!"
