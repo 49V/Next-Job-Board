@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/candidate', to: 'candidates#candidate'
   get '/jobs',       to: 'jobs#jobs'
   get '/users',      to: 'users#signup'
-  get '/index',      to: 'users#index'
+  #TODO: IMPLEMENT ADMIN PANEL get '/index',      to: 'users#index'
   get '/login',      to: 'sessions#new'
   post '/login',     to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
