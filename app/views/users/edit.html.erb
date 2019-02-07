@@ -4,29 +4,30 @@
 <body>
 
 	<div class="page-background">
-
 	<div class="page-container">
 
 	  <!-- NAVIGATION BAR -->
-	  <div class="nav-bar">
+    <div class="nav-bar-wrapper">
+      <div class="nav-bar">
 
-	  	<%= render 'layouts/header' %>  
+  	  	<%= render 'layouts/header' %>  
+        <div class="hamburger-menu">
+          <a class="nav-button" href="/jobs">Jobs</a>
+          <a class="nav-button" href="/candidate">Candidates</a>
+          <%= link_to "Settings", edit_user_path(current_user), class: "nav-button--colored"%>
+          <a class="nav-button" target="_blank" href="https://docs.google.com/forms/d/1cKYAyX2_6A8f66zet6fNKarAsKw-Vm1cYEsiaF2fwjA/viewform?edit_requested=true">Give Feedback</a>
+          <a class="nav-button" href="/logout" data-method="delete">Log Out</a>
+        </div>
 
-	  	<div class="hamburger-menu">
-	  		<a class="nav-button" href="/jobs">Jobs</a>
-	  		<a class="nav-button" href="/candidate">Candidates</a>
-	  		<%= link_to "Settings", edit_user_path(current_user), class: "nav-button", style: "color: #D8272D; font-weight: 700;" %>
-	  		<a class="nav-button" href="/logout" data-method="delete">Log Out</a>
-	  	</div>
-
-	  </div>
+      </div>
+    </div>
 
 
 	  <div class="content-container" style="margin-top: 50px">
 
 		  <!-- PAGE HEADER -->
-		  <div class="page-header h-1">
-		  	Account Settings <p style="color:#D8272D;"><%= @user[:email] %></p>
+		  <div class="header-2">
+		  	Change Settings for Account: <p style="color:#D8272D;"><%= @user[:email] %></p>
 		  </div>
 
 
@@ -42,14 +43,14 @@
 			  	<div class="row-separator"></div>
 
 			  	<div class="account-settings__row">
-			  		<%= f.label :password, class: 'account-settings__variable'%>
+			  		<%= f.label :new_password, class: 'account-settings__variable'%>
 			  		<%= f.password_field :password, class: 'account-settings__value'%>
 			  	</div>
 
 			  	<div class="row-separator"></div>
 
 			  	<div class="account-settings__row">
-			  		<%= f.label :password_confirmation, class: 'account-settings__variable'%>
+			  		<%= f.label :confirm_new_password, class: 'account-settings__variable'%>
 			  		<%= f.password_field :password_confirmation, class: 'account-settings__value' %>
 			  	</div>
 

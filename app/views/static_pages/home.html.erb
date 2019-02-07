@@ -9,48 +9,62 @@
   <div class="page-container">
 
     <!-- NAVIGATION BAR -->
-    <div class="nav-bar">
+    <div class="nav-bar-wrapper">
+      <div class="nav-bar">
 
-      <%= image_tag( "Next-Canada-RGB.png", class: 'next-logo' ) %>
+        <%= render 'layouts/header' %>
+        <div class="hamburger-menu">
+          <a class="nav-button" href="./jobs">Jobs</a>
+          <a class="nav-button" href="./candidate">Candidates</a>
+          <%= link_to "Settings", edit_user_path(current_user), class: "nav-button"%>
+          <a class="nav-button" target="_blank" href="https://docs.google.com/forms/d/1cKYAyX2_6A8f66zet6fNKarAsKw-Vm1cYEsiaF2fwjA/viewform?edit_requested=true">Give Feedback</a>
+          <a class="nav-button" href="/logout" data-method="delete">Log Out</a>
+        </div>
 
-      <div class="hamburger-menu">
-        <a class="nav-button" href="./jobs">Jobs</a>
-        <a class="nav-button" href="./candidate">Candidates</a>
-        <%= link_to "Settings", edit_user_path(current_user), class: "nav-button"%>
-        <a class="nav-button" href="/logout" data-method="delete">Log Out</a>
       </div>
-
     </div>
 
-    <div class="content-container" style="margin-top: 100px">
+    <div class="content-container--home">
 
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
-      <!-- PAGE HEADER -->
-      <div class="page-header h-1">
-        Welcome to the Next Alumni Job Portal
-      </div>
-      <div class="page-header h-2">
-        Work for a Next Alumni Company or Hire a Next Alumni
-      </div>
 
       <!-- ACCESS CARDS -->
-      <div class="card-container">
-        <a class="card" href="./jobs.html">
-          <div class="card__banner"></div>
+      <div class="home-container">
+        <!-- PAGE HEADER -->
+        <div class="home-header-wrapper">
+          <div class="header-2" style="padding: 0px">
+            Welcome to the Next Canada Alumni Job Portal.
+          </div>
+          <div class="header-3">
+            Next Canada is an incredible network of individuals. This portal is meant to act as a resource so that all Next Alumni have a way to find incredible people to work with. Whether you're running a company and want to hire a fellow Next Alumni or you want to work at a company founded by a Next Alumni, this portal is your go to.
+          </div>
+        </div>
+        <div class="separator"></div>
+        <a href="./jobs.html">
           <div class="card__text">
-            Jobs
+            Work For a Next Alumni
+            <i class="fas fa-arrow-right" style="margin-left: 20px"></i>
           </div>
         </a>
-        <a class="card" href="./candidate">
-          <div class="card__banner"></div>
+        <a href="./candidate">
           <div class="card__text">
-            Candidates
+            Hire a Next Alumni
+            <i class="fas fa-arrow-right" style="margin-left: 20px"></i>
           </div>
         </a>
       </div>
 
+    </div>
+
+    <div class="footer-container">
+      <img
+        class="next-logo"
+        src="/assets/Next-Canada-RGB.png"
+        alt=""/>
+      <div class="vertical-separator"></div>
+      <div class="next-canada-alumni-footer">Next Canada Alumni Job Board</div>
     </div>
 
    </div>

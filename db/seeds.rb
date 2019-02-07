@@ -29,8 +29,8 @@ User.create!(name:  "Example User",
 
 end
 
-users = User.order(:created_at).take(50)
-50.times do
+users = User.order(:created_at).take(3)
+3.times do
   content = Faker::Lorem.sentence(5)
   website = "https://www.linkedin.com"
   users.each { |user| user.jobs.create!(title: content,
@@ -38,7 +38,7 @@ users = User.order(:created_at).take(50)
                                         website: website,
                                         link: "https://www.facebook.com",
                                         role: "Tech",
-                                        notes: "I'm really looking forward to...") }
+                                        notes: "Best Job Ever!!") }
 
   users.each { |user| user.create_candidate!(bio: "Motivated Entrepreneur",
                                              name: user.name,
