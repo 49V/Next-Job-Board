@@ -34,11 +34,11 @@ users = User.order(:created_at).take(50)
   content = Faker::Lorem.sentence(5)
   website = "https://www.linkedin.com"
   users.each { |user| user.jobs.create!(title: content,
-                                        company: "BEANS",
+                                        company: "Company XYZ Inc.",
                                         website: website,
                                         link: "https://www.facebook.com",
                                         role: "Tech",
-                                        notes: "Darian sucks") }
+                                        notes: "I'm really looking forward to...") }
 
   users.each { |user| user.create_candidate!(bio: "Motivated Entrepreneur",
                                              name: user.name,
