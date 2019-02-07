@@ -33,16 +33,20 @@ users = User.order(:created_at).take(3)
 3.times do
   content = Faker::Lorem.sentence(5)
   website = "https://www.linkedin.com"
-  users.each { |user| user.jobs.create!(title: content,
-                                        company: "Company XYZ Inc.",
-                                        website: website,
-                                        link: "https://www.facebook.com",
-                                        role: "Tech",
-                                        notes: "Best Job Ever!!") }
+  users.each { |user| user.jobs.create!(
+    title: content,
+    company: "Company XYZ Inc.",
+    website: website,
+    link: "https://www.facebook.com",
+    location: "Toronto",
+    role: "Tech",
+    ) }
 
-  users.each { |user| user.create_candidate!(bio: "Motivated Entrepreneur",
-                                             name: user.name,
-                                             portfolio: "https://www.linkedin.com/in/moshelawlor/",
-                                             role: "Tech",
-                                             user_id: user.id) }
+  users.each { |user| user.create_candidate!(
+    location: "Toronto",
+    looking_for: "Serious work",
+    name: user.name,
+    role: "Tech",
+    user_id: user.id
+    ) }
 end

@@ -6,8 +6,11 @@ sadie:
   website: "www.sadiehopkins.com"
   link: "www.linkedin.com/snades"
   role: "Technical"
-  notes: "Must be able to cuddle like Moshe"
   created_at: <%= 10.minutes.ago %>
+  elevator_pitch: "Sample elevator pitch"
+  why_get_excited: "Why get excited"
+  description: "Sample job description"
+  location: "Toronto"
   user: archer
 
 beans:
@@ -16,8 +19,11 @@ beans:
   website: "www.beans.com"
   link: "www.linkedin.com/beans"
   role: "Technical"
-  notes: "Must be able to cuddle like Moshe"
   created_at: <%= 3.years.ago %>
+  elevator_pitch: "Sample elevator pitch"
+  why_get_excited: "Why get excited"
+  description: "Sample job description"
+  location: "Toronto"
   user: archer
 
 oreo:
@@ -26,8 +32,11 @@ oreo:
   website: "www.oreo.com"
   link: "www.linkedin.com/ore"
   role: "Technical"
-  notes: "Must be able to cuddle like Moshe"
   created_at: <%= 10.years.ago %>
+  elevator_pitch: "Sample elevator pitch"
+  why_get_excited: "Why get excited"
+  description: "Sample job description"
+  location: "Toronto"
   user: lana
 
 most_recent:
@@ -36,6 +45,9 @@ most_recent:
   website: "www.oreo.com"
   link: "www.linkedin.com/ore"
   role: "Technical"
-  notes: "Yesterday, all my cuddles seemed so far away"
   created_at: <%= Time.zone.now %>
+  elevator_pitch: "Sample elevator pitch"
+  why_get_excited: "Why get excited"
+  description: "Sample job description"
+  location: "Toronto"
   user: lana

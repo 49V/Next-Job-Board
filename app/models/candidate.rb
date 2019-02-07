@@ -1,4 +1,4 @@
 class Candidate < ApplicationRecord
   belongs_to :user
-  validates :bio, :portfolio, :role, presence: true
+  validates :looking_for, :location, :role, presence: true
 end

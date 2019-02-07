@@ -1,13 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 moshe:
-  bio: MyText
-  portfolio: MyText
   role: MyText
+  looking_for: "Sample looking for"
+  highlights: "Sample highlights"
+  LinkedIn: "https://www.linkedin.com"
+  GitHub: "https://www.linkedin.com"
+  Behance: "https://www.linkedin.com"
+  Dribbble: "https://www.linkedin.com"
+  Angellist: "https://www.linkedin.com"
+  other: "https://www.linkedin.com"
+  location: "Vancouver"
   user: michael
 
 reza:
-  bio: MyText
-  portfolio: MyText
   role: MyText
+  looking_for: "Sample looking for"
+  highlights: "Sample highlights"
+  LinkedIn: "https://www.linkedin.com"
+  GitHub: "https://www.linkedin.com"
+  Behance: "https://www.linkedin.com"
+  Dribbble: "https://www.linkedin.com"
+  Angellist: "https://www.linkedin.com"
+  other: "https://www.linkedin.com"
+  location: "Toronto"
   user: two

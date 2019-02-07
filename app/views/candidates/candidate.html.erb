@@ -33,6 +33,9 @@
 
 	  <div class="content-container">
 
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
 		  <!-- PAGE HEADER -->
 			<div class="page-header__container">
         <div class="header-wrapper"> 
@@ -82,19 +85,19 @@
               <div class="post-info__wrapper">
                 <div class="post-note__heading">I am Looking For</div>
                 <div class="post-note__body">
-                  <%= @user_candidate.bio %>
+                  <%= @user_candidate.looking_for %>
                 </div>  
               </div>
               <div class="post-info__wrapper">
                 <div class="post-note__heading">My Highlights</div>
                 <div class="post-note__body">
-                  <%= @user_candidate.bio %>
+                  <%= @user_candidate.highlights %>
                 </div>  
               </div>
               <div class="post-info__wrapper">
                 <div class="post-note__heading">Type of Role</div>
                 <div class="post-note__body">
-                  <%= @user_candidate.bio %>
+                  <%= @user_candidate.role %>
                 </div>  
               </div>
             </div>
@@ -102,12 +105,12 @@
             <div class="post-container__footer">
               <div class="post-location__wrapper">
                 <i class="fa fa-map-marker-alt"></i>
-                <div class="post-location__text">Anywhere on the West Coast</div>
+                <div class="post-location__text"><%= @user_candidate.location %></div>
               </div>
 
               <div class="post-container__footer__link-wrapper">
                 <i class="fa fa-external-link-alt portfolio-icon">
-                  <%= link_to "#{@user_candidate.portfolio}", "http://#{@candidate.portfolio}" %>
+                  <%= link_to "", "" %>
                 </i>
                 <i class="fab fa-linkedin portfolio-icon"></i>
                 <i class="fab fa-github portfolio-icon"></i>
@@ -153,19 +156,19 @@
               <div class="post-info__wrapper">
                 <div class="post-note__heading">I am Looking For</div>
                 <div class="post-note__body">
-                  <%= candidate.bio %>
+                  <%= candidate.looking_for %>
                 </div>  
               </div>
               <div class="post-info__wrapper">
                 <div class="post-note__heading">My Highlights</div>
                 <div class="post-note__body">
-                  <%= candidate.bio %>
+                  <%= candidate.highlights %>
                 </div>  
               </div>
               <div class="post-info__wrapper">
                 <div class="post-note__heading">Type of Role</div>
                 <div class="post-note__body">
-                  <%= candidate.bio %>
+                  <%= candidate.role %>
                 </div>  
               </div>
             </div>
@@ -173,12 +176,12 @@
             <div class="post-container__footer">
               <div class="post-location__wrapper">
                 <i class="fa fa-map-marker-alt"></i>
-                <div class="post-location__text">Anywhere on the West Coast</div>
+                <div class="post-location__text"><%= candidate.location %></div>
               </div>
 
               <div class="post-container__footer__link-wrapper">
                 <i class="fa fa-external-link-alt portfolio-icon">
-                  <%= link_to "#{candidate.portfolio}", "http://#{candidate.portfolio}" %>
+                  <%= link_to "", "" %>
                 </i>
                 <i class="fab fa-linkedin portfolio-icon"></i>
                 <i class="fab fa-github portfolio-icon"></i>
@@ -215,48 +218,48 @@
                   </div>
                   
                   <div class="post-job__row">
-                    <%= f.label :i_am_looking_for, class: "post-job__variable"%>
-                    <%= f.text_field :bio, class: "post-job__value", placeholder: "Tell us what kind of opportunity you are looking for?" %>
+                    <%= f.label :looking_for, class: "post-job__variable"%>
+                    <%= f.text_field :looking_for, class: "post-job__value", placeholder: "Tell us what kind of opportunity you are looking for?" %>
                   </div>
 
                   <div class="post-job__row">
-                    <%= f.label :my_highlights, class: "post-job__variable"%>
-                    <%= f.text_field :bio, class: "post-job__value", placeholder: "Briefly outline your highlights? What have you started, built, or contributed to?" %>
+                    <%= f.label :highlights, class: "post-job__variable"%>
+                    <%= f.text_field :highlights, class: "post-job__value", placeholder: "Briefly outline your highlights? What have you started, built, or contributed to?" %>
                   </div>
 
                   <div class="post-job__row">
-                    <%= f.label :type_of_role, class: "post-job__variable"%>
-                    <%= f.text_field :bio, class: "post-job__value", placeholder: "ie/ Full Time, Remote, Part Time, Contractor, Intern, etc." %>
+                    <%= f.label :role, class: "post-job__variable"%>
+                    <%= f.text_field :role, class: "post-job__value", placeholder: "ie/ Full Time, Remote, Part Time, Contractor, Intern, etc." %>
                   </div>
 
                   <div class="post-job__row">
                     <%= f.label :LinkedIn, class: "post-job__variable" %>
-                    <%= f.text_field :portfolio, class: "post-job__value", placeholder: "paste link here"%>
+                    <%= f.text_field :LinkedIn, class: "post-job__value", placeholder: "paste link here"%>
                   </div>
 
                   <div class="post-job__row">
-                    <%= f.label :Github, class: "post-job__variable" %>
-                    <%= f.text_field :portfolio, class: "post-job__value", placeholder: "paste link here"%>
+                    <%= f.label :GitHub, class: "post-job__variable" %>
+                    <%= f.text_field :GitHub, class: "post-job__value", placeholder: "paste link here"%>
                   </div>
 
                   <div class="post-job__row">
                     <%= f.label :Behance, class: "post-job__variable" %>
-                    <%= f.text_field :portfolio, class: "post-job__value", placeholder: "paste link here"%>
+                    <%= f.text_field :Behance, class: "post-job__value", placeholder: "paste link here"%>
                   </div>
 
                   <div class="post-job__row">
                     <%= f.label :Dribbble, class: "post-job__variable" %>
-                    <%= f.text_field :portfolio, class: "post-job__value", placeholder: "paste link here"%>
+                    <%= f.text_field :Dribbble, class: "post-job__value", placeholder: "paste link here"%>
                   </div>
 
                   <div class="post-job__row">
                     <%= f.label :Angellist, class: "post-job__variable" %>
-                    <%= f.text_field :portfolio, class: "post-job__value", placeholder: "paste link here"%>
+                    <%= f.text_field :Angellist, class: "post-job__value", placeholder: "paste link here"%>
                   </div>
 
                   <div class="post-job__row">
-                    <%= f.label :Other, class: "post-job__variable" %>
-                    <%= f.text_field :portfolio, class: "post-job__value", placeholder: "paste another link, such as a link to your portfolio"%>
+                    <%= f.label :other, class: "post-job__variable" %>
+                    <%= f.text_field :other, class: "post-job__value", placeholder: "paste another link, such as a link to your portfolio"%>
                   </div>
 
                   <div class="post-job__row__column">
@@ -326,8 +329,8 @@
                   </div>
 
                   <div class="post-job__row">
-                    <%= f.label :Location, class: "post-job__variable"%>
-                    <%= f.text_field :bio, class: "post-job__value", placeholder: "Where are you interested and/or willing to work?" %>
+                    <%= f.label :location, class: "post-job__variable"%>
+                    <%= f.text_field :location, class: "post-job__value", placeholder: "Where are you interested and/or willing to work?" %>
                   </div>
 
                   <div class="post-job__row row-reverse">

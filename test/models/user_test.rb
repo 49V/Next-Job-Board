@@ -77,12 +77,17 @@ class UserTest < ActiveSupport::TestCase
 
   test "associated microposts should be destroyed" do
     @user.save
-    @user.jobs.create!(title: "Dev",
-                       company: "Beans & Co.",
-                       website: "www.beans.com",
-                       link: "www.linkedin.com",
-                       role: "Technical",
-                       notes: "MEOW MEOW MEOW")
+    @user.jobs.create!(
+      title: "Dog Cuddler",
+      company: "Sadie & Co.",
+      website: "www.sadiehopkins.com",
+      link: "www.linkedin.com/snades",
+      role: "Technical",
+      elevator_pitch: "Sample elevator pitch",
+      why_get_excited: "Why get excited",
+      description: "Sample job description",
+      location: "Toronto"
+    )
     assert_difference 'Job.count', -1 do
       @user.destroy
     end

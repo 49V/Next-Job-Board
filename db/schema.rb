@@ -10,16 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190207170112) do
+ActiveRecord::Schema.define(version: 20190207173439) do
 
   create_table "candidates", force: :cascade do |t|
-    t.text "bio"
     t.text "name"
-    t.text "portfolio"
     t.text "role"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "looking_for"
+    t.text "highlights"
+    t.string "LinkedIn"
+    t.string "GitHub"
+    t.string "Behance"
+    t.string "Dribbble"
+    t.string "Angellist"
+    t.text "other"
+    t.text "location"
     t.index ["user_id", "created_at"], name: "index_candidates_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end

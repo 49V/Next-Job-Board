@@ -19,7 +19,7 @@ class CandidatesController < ApplicationController
 
     @candidate = current_user.build_candidate(candidate_params)
     @candidate.name = current_user.name
-    if @candidate.save
+    if @candidate.save # TODO: NEED TO AVOID DOING A CANDIDATE SAVE IF IT ISN'T VALID
       flash[:success] = "Candidate posting created!"
       redirect_to candidate_path
     else
@@ -33,7 +33,7 @@ class CandidatesController < ApplicationController
 
   def destroy
     @user_candidate.destroy
-    flash[:success] = "Micropost deleted"
+    flash[:success] = "Candidate posting deleted"
     redirect_to candidate_path
   end
 
@@ -44,7 +44,7 @@ class CandidatesController < ApplicationController
   private
 
     def candidate_params
-      params.require(:candidate).permit(:bio, :portfolio, :role)
+      params.require(:candidate).permit(:role, :looking_for, :highlights, :LinkedIn, :GitHub, :Behance, :Dribbble, :Angellist, :other, :location)
     end
 
     def correct_user

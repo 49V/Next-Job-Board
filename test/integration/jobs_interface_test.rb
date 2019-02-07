@@ -15,18 +15,23 @@ class JobsInterfaceTest < ActionDispatch::IntegrationTest
     end
     assert_select 'div#error_explanation'
     # Valid submission
-    content = "Need strong desire to love beans."
+    title = "Co-Founder"
     assert_difference 'Job.count', 1 do
-      post jobs_path, params: { job: {title: "Developer",
-                                      company: "Beans & Co.",
-                                      website: "www.beans.com",
-                                      link: "www.linkedin.com",
-                                      role: "Technical",
-                                      notes: "Need strong desire to love beans." } }
+      post jobs_path, params: { job: {
+        title: title,
+        company: "Sadie & Co.",
+        website: "www.sadiehopkins.com",
+        link: "www.linkedin.com/snades",
+        role: "Technical",
+        elevator_pitch: "Sample elevator pitch",
+        why_get_excited: "Why get excited",
+        description: "Sample job description",
+        location: "Toronto" 
+        } }
     end
     assert_redirected_to jobs_url
     follow_redirect!
-    assert_match content, response.body
+    assert_match title, response.body
     # Delete post
     first_job = @user.jobs.paginate(page: 1).first
     assert_difference 'Job.count', -1 do

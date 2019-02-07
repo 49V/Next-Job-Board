@@ -4,12 +4,17 @@ class JobTest < ActiveSupport::TestCase
 
   def setup
     @user = users(:michael)
-    @job = @user.jobs.build(title: "Dev",
-                   company: "Beans & Co.",
-                   website: "www.beans.com",
-                   link: "www.linkedin.com",
-                   role: "Tech",
-                   notes: "MEOW MEOW MEOW")
+    @job = @user.jobs.build(
+      title: "Dog Cuddler",
+      company: "Sadie & Co.",
+      website: "www.sadiehopkins.com",
+      link: "www.linkedin.com/snades",
+      role: "Technical",
+      elevator_pitch: "Sample elevator pitch",
+      why_get_excited: "Why get excited",
+      description: "Sample job description",
+      location: "Toronto"
+    )
   end
 
   test "should be valid" do
@@ -38,11 +43,6 @@ class JobTest < ActiveSupport::TestCase
 
   test "role should be present" do
     @job.role = nil
-    assert_not @job.valid?
-  end
-
-  test "notes should be at most 500 characters" do
-    @job.notes = "A" * 501
     assert_not @job.valid?
   end
 
