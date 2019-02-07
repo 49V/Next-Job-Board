@@ -15,36 +15,37 @@
   <div class="page-container">
 
     <!-- NAVIGATION BAR -->
-    <div class="nav-bar">
+    <div class="nav-bar-wrapper">
+      <div class="nav-bar">
 
-      <a href="/">
-        <img
-          class="next-logo"
-          src="assets/Next-Canada-RGB.png"
-          alt=""/>
-      </a>
-
-      <div class="hamburger-menu">
-        <a class="nav-button" href="./users">Sign Up</a>
+        <a href="/">
+          <img
+            class="next-logo"
+            src="/assets/Next-Canada-RGB.png"
+            alt=""/>
+        </a>
+        <div class="hamburger-menu">
+          <a class="nav-button" href="./users">Sign Up</a>
         <a class="nav-button" style="color: #D8272D; font-weight: 700;"href="/login">Log In</a>
-      </div>
+        </div>
 
+      </div>
     </div>
 
     <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
 
-    <!-- PAGE HEADER -->
-    <div class="page-header h-1">
-        Log In
-    </div>
-
-    <div class="content-container" style="margin-top: 50px">
+    <div class="content-container--home">
 
       <%= form_for(:session, url: login_path) do |f| %>
 
       <div class="sign-up__container">
+
+        <!-- PAGE HEADER -->
+        <div class="header-2" style="text-align: center;">
+            Log In
+        </div>
 
         <div class="sign-up__row">
           <%= f.label :email, class: 'sign-up__variable' %>
@@ -80,9 +81,15 @@
       </div>
 
       <% end %>
+    </div>
 
-
-
+    <div class="footer-container">
+      <img
+        class="next-logo"
+        src="/assets/Next-Canada-RGB.png"
+        alt=""/>
+      <div class="vertical-separator"></div>
+      <div class="next-canada-alumni-footer">Next Canada Alumni Job Board</div>
     </div>
 
    </div>

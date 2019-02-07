@@ -5,7 +5,7 @@
   <script src="jobs.js"></script>
   <style type="text/css"></style>
   <link href="main.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <script src="jobs.js"></script>
 </head>
 
@@ -25,9 +25,13 @@
       </a>
       <div class="hamburger-menu">
         <a class="nav-button" style="color: #D8272D; font-weight: 700;" href="./jobs">Jobs</a>
-        <a class="nav-button" href="./candidate">Candidates</a>
+        <a class="nav-button" href="./candidate">
+        Candidates</a>
         <%= link_to "Admin Settings", edit_user_path(current_user), class: "nav-button"%>
-        <a class="nav-button" href="/logout" data-method="delete">Log Out</a>
+        <a class="nav-button" style="color: #D8272D; font-weight: 700;" 
+        href="https://docs.google.com/forms/d/1cKYAyX2_6A8f66zet6fNKarAsKw-Vm1cYEsiaF2fwjA/viewform?edit_requested=true">Give Feedback</a>
+        <a class="nav-button" href="/logout" data-method="delete">
+        Log Out</a>
       </div>
 
     </div>

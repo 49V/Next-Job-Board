@@ -4,7 +4,7 @@
 <head>
   <style type="text/css"></style>
   <link href="main.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 
 <body>
@@ -14,21 +14,24 @@
   <div class="page-container">
 
     <!-- NAVIGATION BAR -->
-    <div class="nav-bar">
+    <div class="nav-bar-wrapper">
+      <div class="nav-bar">
 
-      <a href="/">
-        <img
-          class="next-logo"
-          src="/assets/Next-Canada-RGB.png"
-          alt=""/>
-      </a>
-      <div class="hamburger-menu">
-        <a class="nav-button" style="color: #D8272D; font-weight: 700;" href="./jobs">Jobs</a>
-        <a class="nav-button" href="./candidate">Candidates</a>
-        <%= link_to "Settings", edit_user_path(current_user), class: "nav-button"%>
-        <a class="nav-button" href="/logout" data-method="delete">Log Out</a>
+        <a href="/">
+          <img
+            class="next-logo"
+            src="/assets/Next-Canada-RGB.png"
+            alt=""/>
+        </a>
+        <div class="hamburger-menu">
+          <a class="nav-button" style="color: #D8272D; font-weight: 700;" href="./jobs">Jobs</a>
+          <a class="nav-button" href="./candidate">Candidates</a>
+          <%= link_to "Settings", edit_user_path(current_user), class: "nav-button"%>
+          <a class="nav-button" target="_blank" href="https://docs.google.com/forms/d/1cKYAyX2_6A8f66zet6fNKarAsKw-Vm1cYEsiaF2fwjA/viewform?edit_requested=true">Give Feedback</a>
+          <a class="nav-button" href="/logout" data-method="delete">Log Out</a>
+        </div>
+
       </div>
-
     </div>
 
 
@@ -39,13 +42,10 @@
       <% end %>
       <!-- PAGE HEADER -->
       <div class="page-header__container">
-        <div class="page-header h-1">
-          Jobs
+        <div class="header-wrapper"> 
+          <div class="header-1">Jobs</div>
+          <div class="header-2">Work for a company started by a Next alumni</div>
         </div>
-        <div class="page-header h-2">
-          Work for a Next Alumni Company
-        </div>
-
         <%= button_tag "Post Job", type: 'button', onclick: "openPostJobPop()", id: "post-job", class: "create-button" %>
       </div>
 
@@ -54,86 +54,133 @@
 
         <!-- PAGE CONTENT - FROM USER -->
         <% if @user.jobs.any? %>
-        <div class="page-header h-3">
+        <div class="header-3">
               Your Job Postings:
         </div>
           <% @user.jobs.each do |user_job| %>
             <div class="post-container post-owned">
-              <div class="post-container__left">
-                <div class="post-info__wrapper post-title">
+              
+              <div class="post-container__header">
+                <div class="post-title">
                   <%= user_job.title %>
                 </div>
-                <div class="post-info__wrapper poster-name">
-                  <%= user_job.company %>
-                </div>
-                <div class="post-info__wrapper post-note">
-                  <%= user_job.notes %>
+                
+                <div class="post-container__header--right">
+                  <% if user_job.role == 'Marketing' %>
+                    <%= render 'layouts/marketing'%>
+                  <% elsif user_job.role == 'Tech'%>
+                    <%= render 'layouts/tech'%>
+                  <% else %>
+                    <%= render 'layouts/finance' %>
+                  <% end %>
+                  
+                  <i class="fas fa-edit post-action__item"></i>
+                  <!-- LINK TO TRASH CAN-->
+                  <%= link_to user_job, method: :delete, data: { confirm: "Are you sure?"} do%>
+                  <i class="fas fa-trash post-action__item"></i>
+                  <% end %>
                 </div>
               </div>
 
-              <div class="post-container__right">
-                <div class="post-info__wrapper">
-                  <div class="post-action__item"> Edit </div>
-                  <!-- LINK TO TRASH CAN-->
-                  <%= link_to user_job, method: :delete, data: { confirm: "Are you sure?"} do%>
-                  <i
-                    class="fas fa-trash post-action__item"
-                    style="margin-left: 20px;">
-                  </i>
-                  <% end %>
+              <div class="post-container__body">
+                <div class="poster-name">
+                  <%= user_job.company %>
                 </div>
-                <% if user_job.role == 'Marketing' %>
-                  <%= render 'layouts/marketing'%>
-                <% elsif user_job.role == 'Tech'%>
-                  <%= render 'layouts/tech'%>
-                <% else %>
-                  <%= render 'layouts/finance' %>
-                <% end %>
-                <div class="post-info__wrapper post-action__item">
-                  <%= link_to "#{user_job.link}", "http://#{user_job.link}" %>
-                  <i class="fas fa-external-link-alt" style="margin-left: 20px;"></i>
+                <div class="post-info__wrapper">
+                  <div class="post-note__heading">Elevator Pitch</div>
+                  <div class="post-note__body">
+                    <%= user_job.notes %>
+                  </div>  
+                </div>
+                <div class="post-info__wrapper">
+                  <div class="post-note__heading">Why Get Excited?</div>
+                  <div class="post-note__body">
+                    <%= user_job.notes %>
+                  </div>  
+                </div>
+                <div class="post-info__wrapper">
+                  <div class="post-note__heading">Job Description</div>
+                  <div class="post-note__body">
+                    <%= user_job.notes %>
+                  </div>  
                 </div>
               </div>
+
+              <div class="post-container__footer">
+                <div class="post-location__wrapper">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <div class="post-location__text">Toronto</div>
+                </div>
+                <div class="post-info__wrapper post-action__item">
+                  <%= link_to "#{user_job.link}", "http://#{user_job.link}" %>
+                  <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                </div>
+              </div>
+
             </div>
           <% end %>
         <% end %>
 
         <!-- PAGE CONTENT - FROM PUBLIC -->
         <% if @public_jobs.any? %>
-        <div class="page-header h-3">
+        <div class="header-3">
               Public Job Postings:
         </div>
         <center><%= will_paginate @public_jobs %></center>
           <% @public_jobs.each do |public_job| %>
             <div class="post-container post-public">
-
-              <div class="post-container__left">
-                <div class="post-info__wrapper post-title">
+              
+              <div class="post-container__header">
+                <div class="post-title">
                   <%= public_job.title %>
                 </div>
-                <div class="post-info__wrapper poster-name">
-                  <%= public_job.company %>
-                </div>
-                <div class="post-info__wrapper post-note">
-                  <%= public_job.notes %>
+                
+                <div class="post-container__header--right">
+                  <% if public_job.role == 'Marketing' %>
+                    <%= render 'layouts/marketing'%>
+                  <% elsif public_job.role == 'Tech'%>
+                    <%= render 'layouts/tech'%>
+                  <% else %>
+                    <%= render 'layouts/finance' %>
+                  <% end %>
                 </div>
               </div>
 
-              <div class="post-container__right">
-                <div class="post-info__wrapper">
+              <div class="post-container__body">
+                <div class="poster-name">
+                  <%= public_job.company %>
                 </div>
-                <% if public_job.role == 'Marketing' %>
-                  <%= render 'layouts/marketing'%>
-                <% elsif public_job.role == 'Tech'%>
-                  <%= render 'layouts/tech'%>
-                <% else %>
-                  <%= render 'layouts/finance' %>
-                <% end %>
-                <div class="post-info__wrapper post-action__item">
-                  <%= link_to "#{public_job.link}", "http://#{public_job.link}" %>
-                  <i class="fas fa-external-link-alt" style="margin-left: 20px;"></i>
+                <div class="post-info__wrapper">
+                  <div class="post-note__heading">Elevator Pitch</div>
+                  <div class="post-note__body">
+                    <%= public_job.notes %>
+                  </div>  
+                </div>
+                <div class="post-info__wrapper">
+                  <div class="post-note__heading">Why Get Excited?</div>
+                  <div class="post-note__body">
+                    <%= public_job.notes %>
+                  </div>  
+                </div>
+                <div class="post-info__wrapper">
+                  <div class="post-note__heading">Job Description</div>
+                  <div class="post-note__body">
+                    <%= public_job.notes %>
+                  </div>  
                 </div>
               </div>
+
+              <div class="post-container__footer">
+                <div class="post-location__wrapper">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <div class="post-location__text">Toronto</div>
+                </div>
+                <div class="post-info__wrapper post-action__item">
+                  <%= link_to "#{public_job.link}", "http://#{public_job.link}" %>
+                  <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                </div>
+              </div>
+
             </div>
           <% end %>
         <% end %>
@@ -164,58 +211,108 @@
           <%= form_for(@job) do |f|%>
             <%= render 'shared/error_messages', object: f.object %>
               <div class="post-job__row">
-                <%= f.label :title, class: "post-job__variable"%>
-                <%= f.text_field :title, class: "post-job__value", placeholder: "Frontend Developer / Co-founder" %>
+                <%= f.label :job_title, class: "post-job__variable"%>
+                <%= f.text_field :title, class: "post-job__value", placeholder: "ie/ Frontend Developer / Co-founder" %>
               </div>
 
               <div class="post-job__row">
                 <%= f.label :company, class: "post-job__variable" %>
-                <%= f.text_field :company, class: "post-job__value", placeholder: "Company XYZ Inc."%>
+                <%= f.text_field :company, class: "post-job__value", placeholder: "ie/ Company XYZ Inc."%>
               </div>
 
               <div class="post-job__row">
                 <%= f.label :website, class: "post-job__variable" %>
-                <%= f.url_field :website, class: "post-job__value", placeholder: "https://www.startup.com" %>
+                <%= f.url_field :website, class: "post-job__value", placeholder: " ie/ https://www.companyxyz.com" %>
               </div>
 
               <div class="post-job__row">
-                <%= f.label :link, class: "post-job__variable" %>
-                <%= f.url_field :link, class: "post-job__value", placeholder: "https://www.angel.co/jobs/examle_url"%>
+                <%= f.label :link_to_job_posting, class: "post-job__variable" %>
+                <%= f.url_field :link, class: "post-job__value", placeholder: "ie/ https://angel.co/companyxyz/jobs"%>
               </div>
 
               <div class="post-job__row__column">
-                <div class="post-job__variable__2">
-                  Type of Role
-                </div>
+                <div class="post-job__variable__2">Type of Role</div>
+
                 <div class="radio-row">
                   <%= f.radio_button :role, 'Marketing', class: "radio-button" %>
-                    <div class="post-job__value__2">
-                      Marketing
-                    </div>
-                    <br />
+                  <div class="post-job__value__2">Co-Founder</div>
                 </div>
 
                 <div class="radio-row">
                   <%= f.radio_button :role, 'Finance', class: "radio-button" %>
-                  <div class="post-job__value__2">
-                    Finance
-                  </div>
-                  <br />
+                  <div class="post-job__value__2">Company Advisor</div>
                 </div>
 
                 <div class="radio-row">
                   <%= f.radio_button :role, 'Tech', class: "radio-button" %>
-                  <div class="post-job__value__2">
-                    Tech
-                  </div>
+                  <div class="post-job__value__2">Founder Mentor</div>
+                </div>
+
+                <div class="radio-row">
+                  <%= f.radio_button :role, 'Marketing', class: "radio-button" %>
+                  <div class="post-job__value__2">Tech - Software</div>
+                </div>
+
+                <div class="radio-row">
+                  <%= f.radio_button :role, 'Finance', class: "radio-button" %>
+                  <div class="post-job__value__2">Tech - Hardware</div>
+                </div>
+
+                <div class="radio-row">
+                  <%= f.radio_button :role, 'Tech', class: "radio-button" %>
+                  <div class="post-job__value__2">Operations</div>
+                </div>
+
+                <div class="radio-row">
+                  <%= f.radio_button :role, 'Marketing', class: "radio-button" %>
+                  <div class="post-job__value__2">Finance</div>
+                </div>
+
+                <div class="radio-row">
+                  <%= f.radio_button :role, 'Finance', class: "radio-button" %>
+                  <div class="post-job__value__2">Sales</div>
+                </div>
+
+                <div class="radio-row">
+                  <%= f.radio_button :role, 'Tech', class: "radio-button" %>
+                  <div class="post-job__value__2">Customer Relations</div>
+                </div>
+
+                <div class="radio-row">
+                  <%= f.radio_button :role, 'Marketing', class: "radio-button" %>
+                  <div class="post-job__value__2">Marketing</div>
+                </div>
+
+                <div class="radio-row">
+                  <%= f.radio_button :role, 'Finance', class: "radio-button" %>
+                  <div class="post-job__value__2">Design</div>
+                </div>
+
+                <div class="radio-row">
+                  <%= f.radio_button :role, 'Tech', class: "radio-button" %>
+                  <div class="post-job__value__2">Human Resources</div>
                 </div>
 
               </div>
 
+              <div class="post-job__row">
+                <%= f.label :elevator_pitch, class: "post-job__variable" %>
+                <%= f.text_area :notes, class: "post-job__value", placeholder: "Give a 5 to 15 word description of your company."%>
+              </div>
 
               <div class="post-job__row">
-                <%= f.label :notes, class: "post-job__variable" %>
-                <%= f.text_area :notes, class: "post-job__value" %>
+                <%= f.label :why_get_excited?, class: "post-job__variable" %>
+                <%= f.text_area :notes, class: "post-job__value", placeholder: "Why should other Next Alumni be excited to work at your company?"%>
+              </div>
+
+              <div class="post-job__row">
+                <%= f.label :job_description, class: "post-job__variable" %>
+                <%= f.text_area :notes, class: "post-job__value", placeholder: "Provide a quick description of the job"%>
+              </div>
+
+              <div class="post-job__row">
+                <%= f.label :Location, class: "post-job__variable"%>
+                <%= f.text_field :notes, class: "post-job__value", placeholder: "Where are you interested and/or willing to work?" %>
               </div>
 
               <div class="post-job__row row-reverse">
