@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190102210842) do
+ActiveRecord::Schema.define(version: 20190207170112) do
 
   create_table "candidates", force: :cascade do |t|
     t.text "bio"
@@ -30,10 +30,13 @@ ActiveRecord::Schema.define(version: 20190102210842) do
     t.string "website"
     t.string "link"
     t.string "role"
-    t.text "notes"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "elevator_pitch"
+    t.text "why_get_excited"
+    t.text "description"
+    t.text "location"
     t.index ["user_id", "created_at"], name: "index_jobs_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end

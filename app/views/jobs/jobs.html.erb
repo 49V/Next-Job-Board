@@ -86,19 +86,19 @@
                 <div class="post-info__wrapper">
                   <div class="post-note__heading">Elevator Pitch</div>
                   <div class="post-note__body">
-                    <%= user_job.notes %>
+                    <%= user_job.elevator_pitch %>
                   </div>  
                 </div>
                 <div class="post-info__wrapper">
                   <div class="post-note__heading">Why Get Excited?</div>
                   <div class="post-note__body">
-                    <%= user_job.notes %>
+                    <%= user_job.why_get_excited %>
                   </div>  
                 </div>
                 <div class="post-info__wrapper">
                   <div class="post-note__heading">Job Description</div>
                   <div class="post-note__body">
-                    <%= user_job.notes %>
+                    <%= user_job.description %>
                   </div>  
                 </div>
               </div>
@@ -106,7 +106,7 @@
               <div class="post-container__footer">
                 <div class="post-location__wrapper">
                   <i class="fas fa-map-marker-alt"></i>
-                  <div class="post-location__text">Toronto</div>
+                  <div class="post-location__text"><%= user_job.location %></div>
                 </div>
                 <div class="post-info__wrapper post-action__item">
                   <%= link_to "#{user_job.link}", "#{user_job.link}" %>
@@ -151,19 +151,19 @@
                 <div class="post-info__wrapper">
                   <div class="post-note__heading">Elevator Pitch</div>
                   <div class="post-note__body">
-                    <%= public_job.notes %>
+                    <%= public_job.elevator_pitch %>
                   </div>  
                 </div>
                 <div class="post-info__wrapper">
                   <div class="post-note__heading">Why Get Excited?</div>
                   <div class="post-note__body">
-                    <%= public_job.notes %>
+                    <%= public_job.why_get_excited %>
                   </div>  
                 </div>
                 <div class="post-info__wrapper">
                   <div class="post-note__heading">Job Description</div>
                   <div class="post-note__body">
-                    <%= public_job.notes %>
+                    <%= public_job.description %>
                   </div>  
                 </div>
               </div>
@@ -171,7 +171,7 @@
               <div class="post-container__footer">
                 <div class="post-location__wrapper">
                   <i class="fas fa-map-marker-alt"></i>
-                  <div class="post-location__text">Toronto</div>
+                  <div class="post-location__text"><%= public_job.location %></div>
                 </div>
                 <div class="post-info__wrapper post-action__item">
                   <%= link_to "#{public_job.link}", "#{public_job.link}" %>
@@ -295,22 +295,22 @@
 
               <div class="post-job__row">
                 <%= f.label :elevator_pitch, class: "post-job__variable" %>
-                <%= f.text_area :notes, class: "post-job__value", placeholder: "Give a 5 to 15 word description of your company."%>
+                <%= f.text_area :elevator_pitch, class: "post-job__value", placeholder: "Give a 5 to 15 word description of your company."%>
               </div>
 
               <div class="post-job__row">
-                <%= f.label :why_get_excited?, class: "post-job__variable" %>
-                <%= f.text_area :notes, class: "post-job__value", placeholder: "Why should other Next Alumni be excited to work at your company?"%>
+                <%= f.label :why_get_excited, class: "post-job__variable" %>
+                <%= f.text_area :why_get_excited, class: "post-job__value", placeholder: "Why should other Next Alumni be excited to work at your company?"%>
               </div>
 
               <div class="post-job__row">
-                <%= f.label :job_description, class: "post-job__variable" %>
-                <%= f.text_area :notes, class: "post-job__value", placeholder: "Provide a quick description of the job"%>
+                <%= f.label :description, class: "post-job__variable" %>
+                <%= f.text_area :description, class: "post-job__value", placeholder: "Provide a quick description of the job"%>
               </div>
 
               <div class="post-job__row">
-                <%= f.label :Location, class: "post-job__variable"%>
-                <%= f.text_field :notes, class: "post-job__value", placeholder: "Where are you interested and/or willing to work?" %>
+                <%= f.label :location, class: "post-job__variable"%>
+                <%= f.text_field :location, class: "post-job__value", placeholder: "Where are you interested and/or willing to work?" %>
               </div>
 
               <div class="post-job__row row-reverse">
