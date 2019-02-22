@@ -13,6 +13,7 @@ Bundler 1.17.x or above
 # (OPTIONAL) Installing Ruby and Rails (Ubuntu)
 
 If you need to install Ruby and Rails, get started with the app install rbenv and ruby-build <br/>
+<br/>
 Mac OS: https://gorails.com/setup/osx/10.14-mojave <br/>
 Windows: https://gorails.com/setup/windows/10 <br/>
 
