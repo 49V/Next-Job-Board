@@ -10,7 +10,11 @@ Bundler 1.17.x or above
 
 ## Getting started
 
-(OPTIONAL) If you need to install Ruby and Rails, get started with the app install rbenv and ruby-build
+# (OPTIONAL) Installing Ruby and Rails (Ubuntu)
+
+If you need to install Ruby and Rails, get started with the app install rbenv and ruby-build
+Mac OS: https://gorails.com/setup/osx/10.14-mojave
+Windows: https://gorails.com/setup/windows/10
 
 ```
 cd
@@ -31,7 +35,7 @@ Make sure everything installed properly
 ```
 ruby -v
 ```
-(OPTIONAL) Then install rails
+Then install rails
 ```
 gem install rails
 ```
@@ -43,7 +47,9 @@ rails -v
 
 Otherwise start with cloning the repo and changing into the appropriate directory.
 
-Next you should install bundler
+# (MANDATORY) Mandatory install assuming you have Ruby and Rails installed
+
+Install bundler
 ```
 gem install bundler
 ```
