@@ -4,9 +4,9 @@ Ruby on Rails Web Application with a comprehensive test suite for engaging alumn
 
 ## Dependencies
 
-Rails 5.1.x or above
-Ruby 2.5.x or above
-Bundler 1.17.x or above
+- Rails 5.1.x or above
+- Ruby 2.5.x or above
+- Bundler 1.17.x or above
 
 ## Getting started
 
