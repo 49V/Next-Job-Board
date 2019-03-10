@@ -2,16 +2,20 @@
 
 Ruby on Rails Web Application with a comprehensive test suite for engaging alumni to work for Next Canada ventures.
 
-![HomePage](https://github.com/49V/Next-Job-Board/blob/master/docs/HomePage.png?raw=true_)
-![Candidates](https://github.com/49V/Next-Job-Board/blob/master/docs/Candidates.png?raw=true_)
-![Jobs](https://github.com/49V/Next-Job-Board/blob/master/docs/Jobs.png?raw=true_)
+## Home Page
+![HomePage](https://raw.githubusercontent.com/49V/Next-Job-Board/master/docs/HomePage.png)
 
+## Candidates Page
+![Candidates](https://raw.githubusercontent.com/49V/Next-Job-Board/master/docs/Candidates.png)
+
+## Jobs Page
+![Jobs](https://raw.githubusercontent.com/49V/Next-Job-Board/master/docs/Jobs.png)
 
 ## Dependencies
 
-Rails 5.1.x or above
-Ruby 2.5.x or above
-Bundler 1.17.x or above
+- Rails 5.1.x or above
+- Ruby 2.5.x or above
+- Bundler 1.17.x or above
 
 ## Getting started
 
