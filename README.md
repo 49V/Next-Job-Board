@@ -19,47 +19,11 @@ Ruby on Rails Web Application with a comprehensive test suite for engaging alumn
 
 ## Getting started
 
-# (OPTIONAL) Installing Ruby and Rails (Ubuntu)
+# Install
 
-If you need to install Ruby and Rails, get started with the app install rbenv and ruby-build <br/>
-<br/>
-Mac OS: https://gorails.com/setup/osx/10.14-mojave <br/>
-Windows: https://gorails.com/setup/windows/10 <br/>
+1) Clone Repository
 
-```
-cd
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-exec $SHELL
-
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-exec $SHELL
-
-rbenv install 2.6.1
-rbenv global 2.6.1
-```
-
-Make sure everything installed properly
-```
-ruby -v
-```
-Then install rails
-```
-gem install rails
-```
-
-Make sure Rails installed properly
-```
-rails -v
-```
-
-Otherwise start with cloning the repo and changing into the appropriate directory.
-
-# (MANDATORY) Mandatory install assuming you have Ruby and Rails installed
-
-Install bundler
+2) Install bundler
 ```
 gem install bundler
 ```
@@ -69,25 +33,25 @@ After installing make sure to run:
 rbenv rehash
 ```
 
-and then install the needed gems:
+3) Install the needed gems:
 
 ```
 $ bundle install --without production
 ```
 
-Next, migrate the database:
+4) Next, migrate the database:
 
 ```
 $ rails db:migrate
 ```
 
-Finally, run the test suite to verify that everything is working correctly:
+5) Finally, run the test suite to verify that everything is working correctly:
 
 ```
 $ rails test
 ```
 
-If the test suite passes, you'll be ready to run the app in a local server:
+6) If the test suite passes, you'll be ready to run the app in a local server:
 
 ```
 $ rails server
